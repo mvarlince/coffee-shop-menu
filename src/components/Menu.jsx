@@ -1,4 +1,5 @@
 import { useState } from "react"
+import './menu.css'
 
 export default function Menu(){
     const [coffees, setCoffees] = useState()
@@ -15,12 +16,16 @@ export default function Menu(){
             <button onClick={() => getCoffees('iced')} >Hot Coffees</button>
         </div>
         {!coffees
-            ? <h2>Welcome to the Beach</h2>
-            : <ul>
+            ? <h2>Welcome to Beach Cafe</h2>
+            : <section className="coffee-container">
                 {coffees.map(coffee => (
-                    <li key={coffee.id}>{coffee.title}</li>
+                    <div key={coffee.id} className="coffee-card">
+                        <img src={coffee.image} alt={coffee.title} />
+                       <h3> {coffee.title}</h3>
+                       <p>{coffee.description}</p>
+                    </div>
                 ))}
-            </ul>
+            </section>
             }
         </article>
     )
